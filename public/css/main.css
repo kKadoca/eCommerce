@@ -41,6 +41,7 @@ main {
 }
 
 .main-header__item a {
+  font-weight: bold;
   text-decoration: none;
   color: white;
 }
