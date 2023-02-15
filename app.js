@@ -1,9 +1,11 @@
 const path = require('path');
 
-const express = require('express');  //contem http module
+const express = require('express');  // contem http module
 const bodyParser = require('body-parser');
 
-const db = require('./util/database');
+const sequelize = require('./util/database');
+const Product = require('./models/product');
+const User = require('./models/user');
 
 const app = express();
 
@@ -22,4 +24,13 @@ app.use(shopRoutes);
 
 app.use(errorsController.get404Page);
 
-app.listen(3000);
+Product.belongsTo(User, { constraints: true, onDelete: 'CASCADE' });
+User.hasMany(Product);
+
+
+sequelize.sync({ force: true })
+.then(result => {
+    console.log(result);
+    app.listen(3000);
+})
+.catch(err => console.log(err));
