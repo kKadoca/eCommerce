@@ -15,11 +15,11 @@ router.get("/products/:productId", shopController.getProductPage);
 router.get('/cart', shopController.getCartPage);
 
 router.post('/cart', shopController.postCartPage);
-/*
+
 router.post('/cart-delete-item', shopController.postCartDeleteProduct);
 
 router.post('/create-order', shopController.postOrder);
 
-router.get('/orders', shopController.getOrdersPage); */
+router.get('/orders', shopController.getOrdersPage);
 
 module.exports = router;
